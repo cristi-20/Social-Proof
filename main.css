@@ -1,0 +1,249 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+:root {
+    /* Colors */
+    --primary-color:hsl(300, 43%, 22%);
+    --secondary-color:hsl(333, 80%, 67%);
+    --dark-magenta: hsl(303, 10%, 53%);
+    --light-magenta:hsl(300, 37%, 91%);
+    --white:#fff;
+    /* Layout */
+    --border-radius:.7em;
+}
+
+body {
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.container {
+    display:grid;
+    place-items: center;
+    max-width: 1400px;
+    margin-inline:auto;
+    min-height:100vh;
+    padding-block:4em;
+    padding-inline:1.5em;
+    position: relative;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap:3em;
+    width: 100%;
+}
+
+/* Mobile Format*/
+/* Main header and the ratings section */
+
+.ratings-section {
+    display: flex;
+    flex-direction: column;
+    gap:3em;
+}
+
+/* Main Header */
+.header {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+
+    .main-header-title {
+        color:var(--primary-color)
+    }
+    
+    .main-header-title {
+        max-width: clamp(350px,450px,350px);
+        margin-bottom: .3em;
+        font-weight: 900;
+        font-size: clamp(2.5rem,5vw,3.3rem);
+        line-height: 1;
+        color:var(--primary-color);
+    }
+
+    .description {
+        max-width: 440px;
+    }
+}
+
+
+/* Ratings */
+.ratings-list {
+    display: grid;
+    justify-items: center;
+    gap:.8em;
+    list-style: none;
+    
+
+    .ratings-list-item {
+        display: grid;
+        justify-items: center;
+        padding-block:.3em;
+        width: 100%;
+        max-width: 500px;
+        border-radius:var(--border-radius);
+        font-weight: 700;
+        color:var(--primary-color);
+        background:var(--light-magenta);
+        
+        
+        &::before {
+            content: "\2605 \2605 \2605 \2605 \2605"; /* Unicode star character */
+            font-size: 1.5rem; /* Size of the star */
+            letter-spacing: .3rem;
+            color: #EF9546; /* Color of filled star */
+          }
+    }
+}
+
+/* Testimonials Cards */
+.social-proof-cards {
+    display: grid;
+    justify-items: center;
+    gap:1.2em;
+}
+
+.card {
+    padding-block:3em;
+    padding-inline:2em;
+    max-width: 500px;
+    width: 100%;
+    border-radius:var(--border-radius);
+    background:var(--primary-color);
+    color:var(--light-magenta);
+    
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap:1.5em;
+    margin-bottom: 2em;
+}
+
+.card-image {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color:var(--light-magenta);
+}
+
+.card-subtitle {
+    /* Changed color for contrast purpose */
+    color:hsl(334, 31%, 67%);
+}
+
+.card-quote {
+    max-width: 350px;
+}
+
+
+/* Footer */
+.attribution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+
+    .footer-link {
+        color:var(--primary-color);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+/* Tablet Format */
+@media (min-width:700px) {
+    .header {
+        .main-header-title {
+            max-width: 450px;
+           
+        }
+    }
+}
+
+/* Desktop Format */
+@media (min-width:1000px) {
+.main-content {
+    gap:6em;
+}
+
+/* Main header */
+.header {
+    justify-items: start;
+    text-align: left;
+    
+ }
+
+    /* Ratings */
+    .ratings-section {
+        flex-direction: row;
+        justify-content: space-between;
+
+        .ratings-list-item {
+           grid-template-columns: repeat(2,1fr);
+           align-items: center;
+           padding-inline:1em;
+           position: relative;
+
+           &:nth-child(1) {
+            right: 120px;
+           }
+
+           &:nth-child(2) {
+            right: 60px;
+           }
+           
+           p {
+            width: 100%;
+           }
+    } 
+}
+
+/* Testimonials */
+.social-proof-cards {
+    grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+
+}
+}
+
+
+/* Large Desktop Format */
+@media (min-width:1300px) {
+  
+    .social-proof-cards {
+        
+    /* Cascading cards */
+    .card {
+        position: relative;
+        &:nth-child(2) {
+            top: 40px;
+           }
+
+           &:nth-child(3) {
+            top: 80px;
+           }
+    }
+    }
+
+    .attribution {
+        margin-top: 8em;
+    }
+}
